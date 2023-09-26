@@ -34,7 +34,7 @@ public class WomenMenuPage  extends TestBase {
     public String getWomenPageTitle(){
         return driver.getTitle();
     }
-    public void getTopsCategories(){
+    public void clickTopsLink(){
         topsLink.click();
     }
 

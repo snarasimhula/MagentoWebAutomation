@@ -6,8 +6,15 @@
     </listeners>
 
     <test name="Magento App Test Cases">
+        <groups>
+            <run>
+                <include name="sanity" />
+            </run>
+        </groups>
         <classes>
-            <class name="com.magento.qa.tests.LandingPageTest"></class>
+
+            <class name="com.magento.qa.tests.CreateAccountPageTest"></class>
+
         </classes>
     </test>
 </suite>

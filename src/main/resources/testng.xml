@@ -4,7 +4,6 @@
     <listeners>
         <listener class-name="com.magento.qa.utils.ExtentReportListener" />
     </listeners>
-
     <test name="Magento App Test Cases">
         <classes>
             <class name="com.magento.qa.tests.LandingPageTest"></class>

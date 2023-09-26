@@ -2,6 +2,8 @@ package com.magento.qa.tests;
 
 import com.magento.qa.base.TestBase;
 import com.magento.qa.pages.*;
+import com.magento.qa.testdata.GetDataFromExcelSheet;
+import com.magento.qa.utils.TestUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
@@ -20,6 +22,11 @@ public class WomenMenuPageTest extends TestBase {
     ConsumerAccountIndexPage consumerAccountIndexPage;
 
     WomenMenuPage womenMenuPage;
+
+    ShoppingCartPage shoppingCartPage;
+
+
+    TestUtils testUtils;
     SizeColorQuantitySelectPage sizeColorQuantitySelectPage;
     String firstName = "firstName"+System.currentTimeMillis();
     String lastName  = "lastName"+System.currentTimeMillis();
@@ -52,30 +59,40 @@ public class WomenMenuPageTest extends TestBase {
     }
 
 
-    @Test
-    public void selectTops(){
-           womenMenuPage.getTopsCategories();
 
-    }
-    @Test
-    public void selectJacketFromTops(){
-        womenMenuPage.getTopsCategories();
-        womenMenuPage.getCategoriesDropDown();
-        womenMenuPage.selectJackets();
-
-    }
-    @Test
-    public void selectJunoJacketFromJacketsFromTops(){
-        womenMenuPage.getTopsCategories();
-        womenMenuPage.getCategoriesDropDown();
-        womenMenuPage.selectJackets();
-        womenMenuPage.selectJunoJacket();
-    }
 
     @Test
     public void getSizeColorQuantitySelectPageTest(){
         sizeColorQuantitySelectPage =womenMenuPage.getSizeColorQuantitySelectPage();
         Assert.assertEquals(sizeColorQuantitySelectPage.getTitle(),"Juno Jacket");
+    }
+
+    @Test
+    public void testVariousOptionsForWomenMenu(){
+       Object[][] testData = GetDataFromExcelSheet.getTestData("Women");
+       int i=0;
+       while(i<testData.length ){
+           String highLevelCategory =testData[i][i].toString();
+           String subCategory = testData[i][1].toString();
+           String brand = testData[i][2].toString();
+           String size = testData[i][3].toString();
+           String color =testData[i][4].toString();
+           String quantity =testData[i][5].toString();
+            if(highLevelCategory.equalsIgnoreCase("Tops") &&
+                   subCategory.equalsIgnoreCase("Jackets")&&
+                   brand.equalsIgnoreCase("Juno Jacket") ){
+                   sizeColorQuantitySelectPage= womenMenuPage.getSizeColorQuantitySelectPage();
+               if(size.equalsIgnoreCase("Medium"))
+                   sizeColorQuantitySelectPage.selectMediumSize();
+               if(color.equalsIgnoreCase("Blue"))
+                   sizeColorQuantitySelectPage.selectBlueColor();
+                   sizeColorQuantitySelectPage.enterQuantity(quantity);
+                   sizeColorQuantitySelectPage.addToCartBtnClick();
+               shoppingCartPage=sizeColorQuantitySelectPage.getShoppingCart();
+               Assert.assertEquals(shoppingCartPage.getTitle(),"Shopping Cart");
+           }
+           i++;
+           }
     }
 
     @AfterMethod

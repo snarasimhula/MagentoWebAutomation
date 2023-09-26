@@ -27,7 +27,7 @@ public class CreateAccountPageTest extends TestBase {
     public CreateAccountPageTest(){
         super();
     }
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp(){
         initialization();
         LandingPage landingPage = new LandingPage();
@@ -41,7 +41,7 @@ public class CreateAccountPageTest extends TestBase {
      Assert.assertEquals(title,"Create New Customer Account");
     }
 
-    @Test
+    @Test(groups ={"sanity"})
     public void createAccountTest(){
        String firstName = "firstName"+System.currentTimeMillis();
        String lastName  = "lastName"+System.currentTimeMillis();
@@ -72,7 +72,7 @@ public class CreateAccountPageTest extends TestBase {
             Assert.assertTrue(driver.getPageSource().contains(errorText));
         }
     }
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown(){
        driver.quit();
     }

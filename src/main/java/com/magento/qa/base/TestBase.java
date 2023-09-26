@@ -2,6 +2,7 @@ package com.magento.qa.base;
 
 
 import org.apache.logging.log4j.LogManager;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 
 import java.io.FileInputStream;
@@ -11,6 +12,7 @@ import java.util.Properties;
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 
@@ -36,6 +38,9 @@ public class TestBase {
         String browserName = properties.getProperty("browser");
         if(browserName.equals("chrome")){
            // System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\drivers\\chromedriver.exe");
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+
             driver = new ChromeDriver();
         }else if(browserName.equals("firefox")){
            // System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"\\drivers\\geckodriver.exe");
