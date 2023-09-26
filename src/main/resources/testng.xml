@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Magento Application Test Automation Test Suite">
+    <listeners>
+        <listener class-name="com.magento.qa.utils.ExtentReportListener" />
+    </listeners>
+
+    <test name="Magento App Test Cases">
+        <classes>
+            <class name="com.magento.qa.tests.LandingPageTest"></class>
+            <class name="com.magento.qa.tests.CreateAccountPageTest"></class>
+            <class name="com.magento.qa.tests.SignInPageTest"></class>
+            <class name="com.magento.qa.tests.ConsumerAccountIndexPageTest"></class>
+            <class name="com.magento.qa.tests.ConsumerAccountIndexPageTest"></class>
+            <class name="com.magento.qa.tests.PlaceOrderPageTest"></class>
+            <class name="com.magento.qa.tests.ShippingAddressPageTest"></class>
+            <class name="com.magento.qa.tests.ShoppingCartPageTest"></class>
+            <class name="com.magento.qa.tests.WomenMenuPageTest"></class>
+            <class name="com.magento.qa.tests.SizeColorQuantitySelectPageTest"></class>
+        </classes>
+    </test>
+</suite>
