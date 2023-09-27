@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 
 public class ShoppingCartPage extends TestBase {
-    @FindBy(xpath = "//*[@id=\"cart-totals\"]/div/table/tbody/tr[3]/th/strong")
+    @FindBy(xpath = "//*[@id=\"cart-totals\"]/div/table/tbody/tr[3]/td/strong/span")
     @CacheLookup
     WebElement orderTotal;
 
