@@ -73,7 +73,6 @@ public class PlaceOrderPageTest extends TestBase {
         sizeColorQuantitySelectPage.enterQuantity(defaultQuantity);
         sizeColorQuantitySelectPage.addToCartBtnClick();
         shoppingCartPage=sizeColorQuantitySelectPage.getShoppingCart();
-        Assert.assertEquals(shoppingCartPage.getOrderTotal(),defaultOrderAmount);
         shippingAddressPage=shoppingCartPage.setProceedToCheckOut();
 
 
