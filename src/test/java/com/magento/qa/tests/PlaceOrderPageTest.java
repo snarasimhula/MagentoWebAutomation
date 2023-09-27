@@ -37,12 +37,7 @@ public class PlaceOrderPageTest extends TestBase {
     String password     = "qwerty12*";
     String defaultQuantity ="2";
     String defaultOrderAmount="$154.00";
-    String stAddress="7805 NE 4th Ave";
-    String city ="Mckinney";
-    String state ="Texas";
-    String country="United States";
-    String zipcode ="75071";
-    String phoneNo ="4256788989";
+
     public PlaceOrderPageTest(){
         super();
     }
@@ -79,8 +74,8 @@ public class PlaceOrderPageTest extends TestBase {
 
     }
 
-    @Test
-    public void testPlaceOrderSuccess(){
+    @Test(dataProvider = "getShippingAddressInfo",dataProviderClass = magentoDataProviders.class)
+    public void testPlaceOrderSuccess(String stAddress,String city,String state,String zipcode,String country,String phoneNo){
         shippingAddressPage.setStreetAddress(stAddress);
         shippingAddressPage.setCity(city);
         shippingAddressPage.selectState(state);
