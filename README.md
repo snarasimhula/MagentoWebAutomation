@@ -4,3 +4,5 @@
 # For complete tests please run by right click on src/main/resources/testng.xml
 # POM.xml contains all the dependencies required.
 # This framework runs fine on intellij or any ide that understands maven project
+# From IDE - file - new Project from version control and use this link https://github.com/snarasimhula/MagentoWebAutomation, download GIT if it is not already there
+# Requires JDK 11 
