@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.asserts.SoftAssert;
 
 
 public class TestBase {
@@ -21,6 +22,8 @@ public class TestBase {
    public static WebDriver driver;
     static Properties properties;
     public static Logger logger =null;
+
+    public SoftAssert softAssert = new SoftAssert();
 
     public TestBase(){
         try{
@@ -41,7 +44,7 @@ public class TestBase {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-            driver = new ChromeDriver();
+            driver= new ChromeDriver();
         }else if(browserName.equals("firefox")){
            // System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"\\drivers\\geckodriver.exe");
             driver = new FirefoxDriver();
